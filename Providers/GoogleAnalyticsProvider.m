@@ -100,16 +100,20 @@
     if (!properties) {
         properties = @{@"value": @([interval intValue])};
     } else {
+        NSString *category = properties.category;
         NSMutableDictionary *newProperties = [properties mutableCopy];
         newProperties[@"value"] = @([interval intValue]);
         properties = newProperties;
+    }
+    if (!category) {
+        category = @"default"; // category is a required value
     }
     
     // Send event
     [self event:event withProperties:properties];
     
     // By Google's header, the interval should be seconds in milliseconds.
-    GAIDictionaryBuilder *builder = [GAIDictionaryBuilder createTimingWithCategory:@"default"
+    GAIDictionaryBuilder *builder = [GAIDictionaryBuilder createTimingWithCategory:category
                                                                           interval:@((int)([interval doubleValue]*1000))
                                                                               name:event
                                                                              label:nil];
