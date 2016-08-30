@@ -1,6 +1,6 @@
 # ARAnalytics
 
-## Version 3.10.2
+## Version 1.0
 
 *   Fix is done in - (void)logTimingEvent:(NSString *)event
     withInterval:(NSNumber *)interval properties:(NSDictionary *)properties
